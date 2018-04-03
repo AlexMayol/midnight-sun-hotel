@@ -1,0 +1,286 @@
+/* 1. Accessible tooltips without javascript */
+
+/* make the containers relative */
+fieldset > div {
+	position: relative;
+}
+
+/* set up hidden tooltip */
+[role="tooltip"] {
+	display: none;
+	padding: 0.25em;
+	margin: 0;
+	color: #fff;
+	background: #EF8100;
+	width: 100%;
+	z-index: 2;
+}
+
+/* reveal associated tooltip on focus of preceeding input */
+input:focus + [role="tooltip"] {
+	display: block;
+	position: absolute;
+	top: 100%;
+}
+
+/* 2. Incrementer & decrementer */
+
+#number {
+	display: inline-block;
+	width: 60%;
+}
+
+#number ~ button {
+	font-size: 1em;
+	font-weight: 700;
+	margin-top: 0.33em;
+	padding: 0.25em;
+	text-align: center;
+}
+
+/* 3. Progressive collapsibles */
+
+.collapsible {
+	padding: 1.5em;
+	background: #E0E1EF;
+}
+
+h3 [aria-expanded] {
+	display: block;
+	width: 100%;
+	font-size: inherit;
+	font-family: inherit;
+	text-transform: inherit;
+	text-align: inherit;
+	margin: 0;
+}
+
+h3 [aria-expanded]:before {
+	content: '\25ba\0020';
+}
+
+h3 [aria-expanded="true"]:before {
+	content: '\25bc\0020';
+}
+
+.collapsible h3 + [aria-hidden] {
+	display: none;
+}
+
+.collapsible h3 + [aria-hidden="false"] {
+	display: block;
+}
+
+/* 4. Simple tab interface */
+
+a[role="tab"] {
+	background: #1928CF;
+	color: #fff;
+	padding: 0.75em 0.33em;
+	display: inline-block;
+	margin-right: 0.25em;
+}
+
+a[aria-selected], a[role="tab"]:focus {
+	background: #fff;
+	color: #222;
+	border: 2px solid #222;
+	border-bottom: 0;
+	position: relative;
+	top: 2px;
+}
+
+a[role="tab"]:focus {
+	background: #eee;
+}
+
+[role="tablist"] li {
+	display: inline-block;
+	list-style: none;
+}
+
+[role="tabpanel"] {
+	margin-top: 0;
+	padding: 1.5em;
+	border: 2px solid #222;
+}
+
+[role="tabpanel"][aria-hidden="true"] {
+	display: none;
+}
+
+[role="tabpanel"]:focus {
+	background: #eee;
+	outline: thin dotted;
+}
+
+/* 5. Alert! You're offline */
+
+#status {
+	padding: 1.5em;
+	background: #5B7751;
+	color: #fff;
+}
+
+#status.offline {
+	background: #BF5050;
+}
+
+/* 6. Warning dialog */
+
+dialog {
+	display: none;
+}
+
+dialog[open] {
+	display: block;
+	width: 50%;
+	height: 50%;
+	position: fixed;
+	margin: auto;
+	top: 0; left: 0; bottom: 0; right: 0;
+	background: #ccc;
+	border: 4px solid #999;
+}
+
+dialog[open]:focus {
+	outline: 2px solid #222;
+}
+
+.mod-hidden {
+	visibility: hidden;
+}
+
+dialog[open] > div {
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+	height: 100%;
+	vertical-align: middle;
+}
+
+dialog[open] [role="document"] {
+	display: table-cell;
+	vertical-align: middle;
+	padding: 1.5em;
+}
+
+dialog[open] [role="document"]:focus {
+	outline: 2px solid;
+}
+
+#big-red {
+	font-size: 2em;
+	background: #cc0000;
+}
+
+/* 7. A toolbar widget */
+
+.grey-box {
+	background: #ddd;
+	padding: 1.5em;
+}
+
+[role="toolbar"] {
+	padding: 0.75em;
+	background: #bbb;
+	position: relative;
+	text-align: center;
+}
+
+[role="toolbar"]:after {
+	content: '\25bc';
+	display: block;
+	width: 100%;
+	text-indent: -0.75em;
+	text-align: center;
+	position: absolute;
+	bottom: -0.75em;
+	font-size: 1.5em;
+	color: #bbb;
+}
+
+[role="toolbar"] button {
+    margin: 0.5em;
+    box-shadow: 1px 1px 0 #222, 2px 2px 0 #222, 3px 3px 0 #222, 4px 4px 0 #222, 5px 5px 0 #222, 6px 6px 0 #222;
+    position: relative;
+    top: -6px;
+}
+
+[role="toolbar"] [aria-pressed="true"], [role="toolbar"] button:active {
+	box-shadow: 1px 1px 0 #222, 2px 2px 0 #222;
+	top: -2px;
+}
+
+[role="toolbar"] button:focus {
+	outline: none;
+	background: #1A248F;
+}
+
+[role="toolbar"] + ul li {
+    background: #fff;
+    list-style: none;
+    padding: 0.5em;
+    margin: 0.25em 0;
+}
+
+#sortable:focus {
+	outline: thin dotted;
+	outline-offset: 5px;
+}
+
+/* 9. Simple dropdowns */
+
+[aria-label^="example"] ul {
+	background: #1928cf;
+}
+
+[aria-label^="example"] ul:after {
+	content: '\0020';
+	display: block;
+	clear: both;
+}
+
+[aria-label^="example"] li {
+	float: left;
+	vertical-align: top;
+	list-style: none;
+}
+
+[aria-label^="example"] li + li a {
+	border-left: 1px solid;
+}
+
+[aria-label^="example"] a {
+	color: #fff;
+	display: block;
+	padding: 0.5em;
+}
+
+[aria-label^="example"] a:hover, [aria-label^="example"] a:focus {
+	background: #222;
+}
+
+[aria-haspopup="true"] {
+	position: relative;
+}
+
+[aria-haspopup="true"] span {
+	font-size: 0.85em;
+	padding-left: 0.25em;
+}
+
+ul[aria-hidden="true"] {
+	display: none;
+}
+
+[aria-haspopup="true"] + ul[aria-hidden="false"] {
+	margin-top: 0;
+	display: block;
+	position: absolute;
+	min-width: 200px;
+}
+
+[aria-haspopup="true"] + ul li {
+	float: none;
+}

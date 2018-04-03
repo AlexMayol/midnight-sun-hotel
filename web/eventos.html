@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" lang="es" content="hotel, lujo, cuatro, cinco, estrellas, servicios personalizados, reservar, habitacion">
+    <meta name="description" lang="es" content="Hotel adaptado para todo el mundo, con las mejores instalaciones y servicios.">
+
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    
+    <title>Eventos | Midnight Sun Hotel</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  </head>
+  <body>
+    <ul id="skip-links" class="skip-links hide-small">
+      <li><a href="#main">Ir al contenido</a></li>
+      <li><a href="#global-nav">Ir al menú de navegación</a></li>
+      <li><a href="#footer">Ir al pie de página</a></li>
+    </ul>
+    <header id="global-nav" role="banner">
+        <mn-header active="eventos"></mn-header>
+      </header>
+    <main role="main" id="main" class="eventos">
+      <nav aria-label="migas de pan" class="breadcrumb">
+        <ol>
+          <li><strong class="only-sr">Estás en: </strong><i class="fa fa-home lightbc" aria-hidden="true"></i></li>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="eventos.html">Eventos</a></li>
+        </ol>
+      </nav>
+      
+     
+
+      <section class="container display-container light">
+        <h1 class="only-sr">Eventos en el hotel</h1>
+        <h2 class="back-d display-middle large">Organización cuidadosa de celebraciones y eventos en un espacio privilegiado</h2>
+        <img class="image" src="img/camapc.jpg" alt="entre nuestros eventos destacan las bodas y reuniones"/>
+      </section>
+
+      <mn-panel-left :img="{alt:'Todos los detalles cuidados al milímetro en tus eventos importan',url:'img/boda2.jpeg'}" url="wip.html">
+        <h2 slot="title">Bodas, comuniones, aniversarios...</h2>
+        <p slot="desc">Celebra con nosotros tu boda y otros eventos inolvidables</p>
+        <div slot="button">Ver más sobre las celebraciones</div>   
+      </mn-panel-left>
+
+      <mn-panel-right :img="{alt:'Disponemos de una sala para reuniones equipada con internet y sofás',url:'img/reunion.jpg'}" url="wip.html">
+        <h2 slot="title">Reuniones profesionales</h2>
+        <p slot="desc">Espacios de trabajo y cátering especiales para grupos de trabajo de entre 15 y 250 personas</p>
+        <div slot="button">Ver más sobre las reuniones</div>   
+      </mn-panel-right>
+
+      <mn-panel-left :img="{alt:'Disponemos de una sala para reuniones equipada con internet y sofás',url:'img/conferencia.jpg'}" url="wip.html">
+        <h2 slot="title">Eventos y grupos de personas con diversidad funcional</h2>
+        <p slot="desc">Instalaciones, servicios y atención al cliente adaptados para la organización de eventos personales
+            o profesionales de personas con diversidad funcional</p>
+        <div slot="button">Más información sobre grupos con diversidad funcional</div>   
+      </mn-panel-left>
+
+    </main>
+    <footer role="contentinfo" id="footer" class="row">
+        <mn-footer></mn-footer>
+    </footer>
+    <script src="js/vue.js" type="text/javascript" defer></script>  
+    <script src="js/scripts.js" type="text/javascript" defer></script>  
+    <link rel="stylesheet" href="css/fa/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  </body>
+</html>

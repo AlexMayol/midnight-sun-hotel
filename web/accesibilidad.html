@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" lang="es" content="hotel, lujo, cuatro, cinco, estrellas, servicios personalizados, reservar, habitacion">
+    <meta name="description" lang="es" content="Hotel adaptado para todo el mundo, con las mejores instalaciones y servicios.">
+
+
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+
+    <title>Accesibilidad | Midnight Sun Hotel</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  </head>
+  <body>
+    <ul id="skip-links" class="skip-links hide-small">
+      <li><a href="#main">Ir al contenido</a></li>
+      <li><a href="#global-nav">Ir al menú de navegación</a></li>
+      <li><a href="#footer">Ir al pie de página</a></li>
+    </ul>
+    <header id="global-nav" role="banner">
+        <mn-header active="a11y"></mn-header>
+      </header>
+    <main role="main" id="main" class="accesibilidad">
+      <nav aria-label="migas de pan" class="breadcrumb">
+        <ol>
+          <li><strong class="only-sr">Estás en: </strong><i class="fa fa-home lightbc" aria-hidden="true"></i></li>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="accesibilidad.html">Accesibilidad</a></li>
+        </ol>
+      </nav>
+      <br aria-hidden="true" />
+      <h1 class="large">Nuestro hotel cuenta con acceso, instalaciones, comunicación, web y formulario de reservas
+       accesibles, además de Habitaciones Universales para el uso cómodo y agradable para TODOS </h1>
+      <section class="block container row">
+        <div class="panel back-dark col l4 pad-right">
+          <h2>Acceso al hotel</h2>
+          <p>Un acceso al hotel fácil y cómodo para todos</p>
+          <a class="button-b-l margin-both" href="wip.html"><div>Ver más sobre el acceso al hotel</div></a>
+        </div>
+        <img class="image col l8 pad-left" src="img/acceso.jpg" alt=""/>
+      </section>
+
+      <section class="block container row">
+        <div class="panel back-light col l4 pad-left right">
+          <h2>Instalaciones y comunicación</h2>
+          <p>El hotel cuenta con instalaciones interiores y exteriores y una comunicación accesible
+          para el uso de todos</p>
+          <a class="button-b-d margin-both" href="wip.html"><div>Ver más sobre las instalaciones y la comunicación</div></a>
+        </div>
+        <img class="image col l8 pad-right left" src="img/jardines.jpg" alt=""/>
+      </section>
+      <section class="block container row">
+        <div class="panel back-dark col l4 pad-right">
+          <h2>Habitación Universal</h2>
+          <p>Una habitación diseñada y concebida para el uso cómodo de todos</p>
+          <a class="button-b-l margin-both" href="wip.html"><div>Ver más sobre la habitación universal</div></a>
+        </div>
+        <img class="image col l8 pad-left" src="habitaciones/doble/universal.jpg" alt=""/>
+      </section>
+      <section class="block container row">
+        <div class="panel back-light col l4 pad-left right">
+          <h2>Sitio web y reservas online</h2>
+          <p>Nuestro sitio web accesible permite a todos navegar, visitar el hotel y reservar
+          gracias a nuestro motor de reservas accesible</p>
+          <a class="button-b-d margin-both" href="wip.html" ><div>Ver más sobre el sitio web accesible</div></a>
+          <a class="button-b-d margin-both" href="habitaciones.html"><div>Reservar</div></a>
+        </div>
+        <img class="image col l8 pad-right left" src="img/reunion2.jpg" alt=""/>
+      </section>
+    </main>
+    <div class="coockie" v-if="accepted == 'false'">
+      <h3>Asepta usté las cuckis? hehe xd</h3>
+      <button @click="acepto">Acepto, kabesa</button>
+      <button @click="borrar">Reniego, fork you</button>
+    </div>
+    <footer role="contentinfo" id="footer" class="row">
+        <mn-footer></mn-footer>
+    </footer>
+    <script src="js/vue.js" type="text/javascript"></script>
+    <script src="js/scripts.js" type="text/javascript"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="css/fa/css/font-awesome.min.css">
+  </body>
+</html>

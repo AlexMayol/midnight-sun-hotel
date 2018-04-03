@@ -1,0 +1,201 @@
+<!--<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" lang="es" content="hotel, lujo, cuatro, cinco, estrellas, servicios personalizados, reservar, habitacion">
+    <meta name="description" lang="es" content="Hotel adaptado para todo el mundo, con las mejores instalaciones y servicios.">
+    <link rel="alternate" href="index.html/en" hreflang="en"/>
+    <link rel="alternate" href="index.html/fr" hreflang="fr"/>
+
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/fa/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script src="js/scripts.js" type="text/javascript" defer></script>
+    <script src="js/oc.js" type="text/javascript"></script>
+    <title>Reservar habitación en el Hotel Integratur</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  </head>
+  <body>
+    <ul id="skip-links" class="skip-links hide-small">
+      <li><a href="#main">Ir al contenido</a></li>
+      <li><a href="#global-nav">Ir al menú de navegación</a></li>
+      <li><a href="#footer">Ir al pie de página</a></li>
+    </ul>
+    <header id="global-nav" role="banner" oc-include-html="header.html"></header>
+    <main class="e" role="main" id="main">
+      <nav aria-label="migas de pan" class="breadcrumb">
+        <ol>
+          <li><strong class="only-sr">Estás en: </strong><i class="fa fa-home lightbc" aria-hidden="true"></i></li>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="habitaciones.html">Habitaciones</a></li>
+          <li><a href="reserva.html">Reservar habitación</a></li>
+        </ol>
+      </nav>
+      <div class="ancho">
+        <h1>Reservar habitacion en el Hotel Luxord</h1>
+        <h2>Formulario de reserva en el hotel Luxord</h2>
+        <form class="container margin-bottom card-2 white" method="get" id="mainform" action="resultados.html">
+          <fieldset>
+            <legend><h3>Datos personales</h3></legend>
+            <div class="row-padding">
+              <div class="col m6 l6">
+                <label class="label validate" for="nombre">Nombre</label>
+                <input name="nombre" class="input" id="nombre" type="text" placeholder="Su nombre">
+              </div>
+              <div class="col m6 l6">
+                <label class="label validate" for="apellidos">Apellidos</label>
+                <input name="apellido" class="input" id="apellidos" type="text" placeholder="Sus apellidos">
+              </div>
+            </div>
+            <div class="row-padding">
+              <div class="col m6 l6">
+                <label class="label validate" for="mail">Correo</label>
+                <input name="correo" class="input" id="mail" type="email" placeholder="Su correo">
+              </div>
+              <div class="col m6 l6">
+                <label class="label validate" for="tlf">Teléfono</label>
+                <input name="tel" class="input" id="tlf" type="number" placeholder="Su número de teléfono">
+              </div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend><h3>Datos de la estancia</h3></legend>
+            <div class="row-padding">
+              <div class="col m6 l6">
+                <label class="label validate" for="dias">Días de estancia</label>
+                <input name="number" class="input" id="dias" type="number" placeholder="Ej.: 4">
+              </div>
+              <div class="col m6 l6">
+                <label class="label validate" for="fecha">Fecha de entrada</label>
+                <input name="number" class="input" id="fecha" type="date">
+              </div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend><h3>¿Posee usted alguna discapacidad?</h3></legend>
+            <input id="si" class="radio" type="radio" name="dis" value="si" onchange="createCheckbox()">
+            <label for="si" class="validate">Sí</label>
+            <input id="no" class="radio" type="radio" name="dis" value="no" onchange="deleteElements('all')">
+            <label for="no" class="validate">No</label>
+          </fieldset>
+          <div id="info">
+            <fieldset>
+              <legend>Seleccione la o las discapacidades que padece:</legend>
+              <input id="ceguera" type="checkbox" name="action" value="ceguera" onclick="setVision()">
+              <label for="ceguera">Discapacidad sensorial</label>
+              <br>
+              <input id="movilidad" type="checkbox" name="action" value="movilidad" onclick="setMovilidad()">
+              <label for="movilidad">Discapacidad física</label>
+              <br>
+              <input id="cogni" type="checkbox" name="action" value="cognitiva" onclick="setCognitiva()">
+              <label for="cogni">Discapacidad cognitiva</label>
+            </fieldset>
+          </div>
+          <div id="sensorial">
+            <fieldset>
+              <legend>Elementos en la habitacion para discapacidades sensoriales:</legend>
+              <input type="checkbox" name="opcion1" value="1" id="op1">
+              <label for="op1">Añadir ítem 1 en la habitacion</label>
+              <br>
+              <input type="checkbox" name="opcion2" value="2" id="op2">
+              <label for="op2">Añadir ítem 2 en la habitacion</label>
+              <br>
+              <input type="checkbox" name="opcion3" value="3" id="op3">
+              <label for="op3">Añadir ítem 3 en la habitacion</label>
+              <br>
+              <input type="checkbox" name="opcion4" value="4" id="op4">
+              <label for="op4">Añadir ítem 4 en la habitacion</label>
+              <br>
+              <input type="checkbox" name="opcion5" value="5" id="op5">
+              <label for="op5">Añadir ítem 5 en la habitacion</label>
+            </fieldset>
+          </div>
+          <div id="fisica">
+            <fieldset>
+              <legend>Elementos en la habitacion para discapacidades físicas:</legend>
+              <input type="checkbox" name="opcion6" value="6" id="op6">
+              <label for="op6">Añadir ítem 1 en la habitacion</label>
+              <br>
+              <input type="checkbox" name="opcion7" value="7" id="op7">
+              <label for="op7">Añadir ítem 2 en la habitacion</label>
+              <br>
+              <input type="checkbox" name="opcion8" value="8" id="op8">
+              <label for="op8">Añadir ítem 3 en la habitacion</label>
+              <br>
+              <input type="checkbox" name="opcion9" value="9" id="op9">
+              <label for="op9">Añadir ítem 4 en la habitacion</label>
+              <br>
+              <input type="checkbox" name="opcion10" value="10" id="op10">
+              <label for="op10">Añadir ítem 5 en la habitacion</label>
+            </fieldset>
+          </div>
+          <div id="cognitiva">
+            <fieldset>
+              <legend>Elementos en la habitacion para discapacidades cognitivas:</legend>
+              <input type="checkbox" name="opcion11" value="11" id="op11">
+              <label for="op11">Añadir ítem 1 en la habitacion</label>
+              <br>
+              <input type="checkbox" name="opcion12" value="12" id="op12">
+              <label for="op12">Añadir ítem 2 en la habitacion</label>
+              <br>
+              <input type="checkbox" name="opcion13" value="13" id="op13">
+              <label for="op13">Añadir ítem 3 en la habitacion</label>
+              <br>
+              <input type="checkbox" name="opcion14" value="14" id="op14">
+              <label for="op14">Añadir ítem 4 en la habitacion</label>
+              <br>
+              <input type="checkbox" name="opcion15" value="15" id="op15">
+              <label for="op15">Añadir ítem 5 en la habitacion</label>
+            </fieldset>
+          </div>
+          <fieldset>
+            <legend><h3>Habitación que va a reservar</h3></legend>
+            <select>
+              <option value="suite1"><span lang="en">Suite Deluxe</span></option>
+              <option value="suite2"><span lang="en">Suite Junior</span></option>
+              <option value="suite3"><span lang="en">Suite Deluxe</span></option>
+              <option value="suite4"><span lang="en">Suite VIP</span></option>
+            </select>
+          </fieldset>
+          <fieldset>
+            <legend><h3>Observaciones sobre la reserva</h3></legend>
+            <div class="row-padding">
+              <div class="col m6 l6">
+                <label class="label" for="ob">Cualquier cosa que nos quiera hacer saber</label><br />
+                <input type="text" name="obs" id="ob"/>
+              </div>
+            </div>
+          </fieldset>
+          <div class="row margin-both">
+            <div class="col m4 l4"> &nbsp;</div>
+            <div class="col m4 l4 center">
+            
+              <a href="wip.html">Ver resultados</a>
+            </div>
+            <div class="col m4 l4">&nbsp;</div>
+          </div>
+        </form>
+      </div>
+    </main>
+    <footer role="contentinfo" id="footer" class="row">
+      <div class="row">
+        <span class="col m6 center padding-medium"><i class="fa fa-phone" title="Número de teléfono" aria-hidden="true"></i>  Teléfono: (+34) 475 483 729</span>
+        <span class="col m6 center padding-medium"><i class="fa fa-envelope" title="Correo electrónico" aria-hidden="true"></i>  Email: <a href="mailto:mail@deprueba.com">mail@deprueba.com</a></span>
+      </div>
+      <nav class="center xlarge">
+        <p>Encuéntranos en</p>
+        <a class="padding-small" href="http://www.twitter.com" rel="external" target="_blank"><i class="fa fa-twitter hover-text-aqua" title="Nuesta cuenta de Twitter" aria-hidden="true"></i><span class="only-sr">Twitter (se abre en otra ventana)</span></a>
+        <a class="padding-small" href="http://www.facebook.com" rel="external" target="_blank"><i class="fa fa-facebook-official hover-text-blue" title="Nuestra cuenta de Facebook" aria-hidden="true"></i><span class="only-sr">Facebook (se abre en otra ventana)</span></a>
+        <a class="padding-small" href="http://www.tripadvisor.com" rel="external" target="_blank"><i class="fa fa-tripadvisor hover-text-green" title="Nuestra cuenta de Tripadvisor" aria-hidden="true"></i><span class="only-sr">Tripadvisor (se abre en otra ventana)</span></a>
+        <a class="padding-small" href="http://www.pinterest.com" rel="external" target="_blank"><i class="fa fa-pinterest-p hover-text-black" title="Nuestra cuenta de Pinterest" aria-hidden="true"></i><span class="only-sr">Pinterest (se abre en otra ventana)</span></a>
+      </nav>
+      <nav class="center small">
+        <p><span>© 2017 Integratur — Todos los derechos reservados</span>
+        <a class="padding-small" href="legal.html">Aviso Legal y Política de Privacidad </a>
+        <a class="padding-small" href="https://www.google.com">Otras cosas importantes</a>
+        <a class="padding-small" href="http://integratur.com/" rel="external" target="_blank">Integratur <span class="only-sr">(se abre en otra ventana)</span></a></p>
+      </nav>
+    </footer>
+  </body>
+</html>-->

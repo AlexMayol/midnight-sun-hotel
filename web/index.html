@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" lang="es" content="hotel, lujo, cuatro, cinco, estrellas, servicios personalizados, reservar, habitacion">
+    <meta name="description" lang="es" content="Hotel adaptado para todo el mundo, con las mejores instalaciones y servicios.">
+
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    
+
+    <title>Inicio | Midnight Sun Hotel</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  </head>
+  <body>
+    <ul id="skip-links" class="skip-links hide-small">
+      <li><a href="#main">Ir al contenido</a></li>
+      <li><a href="#global-nav">Ir al menú de navegación</a></li>
+      <li><a href="#footer">Ir al pie de página</a></li>
+    </ul>
+    <header id="global-nav" role="banner">
+      <mn-header active="home"></mn-header>
+    </header>
+    <main role="main" id="main" class="inicio">
+      <nav aria-label="migas de pan" class="breadcrumb">
+        <ol>
+          <li><strong class="only-sr">Estás en: </strong><i class="fa fa-home lightbc" aria-hidden="true"></i></li>
+          <li><a href="index.html">Inicio</a></li>
+        </ol>
+      </nav>
+      <section class="display-container container dark">
+        <div class="sizeM">
+          <h1 class="display-middle large back-d">Bienvenidos al Hotel INTEGRATUR, la excelencia
+          en los espacios y la atención al alcance de todos</h1>
+        </div>
+        <img
+          sizes="100w"
+          srcset="
+          img/terraza_low.jpg 1100w,
+          img/terraza_med.jpg 1900w,
+          img/terraza_high.jpg 2500w"
+          src="img/terraza_low.jpg"
+          alt=""
+          class="image" />
+      </section>
+      <section class="container-date">
+        <div class="back-form">
+          <form class="reserva-form row">
+            <fieldset>
+              <legend><h2 class="padding-top-2">Reservar habitación</h2></legend>
+              <div class="col s12 m6">
+                <label for="entrada">Fecha de entrada</label><br />
+                <input id="entrada" type="date" /><br />
+              </div>
+              <div class="col s12 m6">
+                <label for="salida">Fecha de salida</label><br />
+                <input id="salida" type="date" /><br />
+              </div>
+            </fieldset>
+            <input class="button-b-d margin-bottom-2" type="submit" value="Comprobar disponibilidad">
+          </form>
+        </div>
+      </section>
+
+      <mn-panel-left :img="{alt:'Disponemos de habitaciones equipadas para todo el mundo.',url:'img/room2.jpg'}" url="habitaciones.html">
+        <h2 slot="title">Habitaciones</h2>
+        <p slot="desc">Cuatro tipos de habitaciones concebidas para el uso más cómodo de todos</p>
+        <div slot="button">Ver más sobre las habitaciones</div>   
+      </mn-panel-left>
+
+      <mn-panel-right :img="{alt:'Disfruta de la mejor gastronomía de varios lugares del mundo',url:'img/desayuno.jpg'}" url="restaurantes.html">
+        <h2 slot="title">Restaurantes</h2>
+        <p slot="desc">Variedad, calidad y creatividad para todos los paladares</p>
+        <div slot="button">Ver más sobre nuestros restaurantes</div>   
+      </mn-panel-right>
+      
+      <mn-panel-left :img="{alt:'El espacio para realizar eventos es de doscientos metros cuadrados.',url:'img/piscina.jpeg'}" url="eventos.html">
+        <h2 slot="title">Instalaciones</h2>
+        <p slot="desc">Instalaciones interiores y exteriores con actividades de lujo para vivir experiencias únicas</p>
+        <div slot="button">Ver más sobre las instalaciones</div>   
+      </mn-panel-left>
+
+      <mn-panel-right :img="{alt:'Espacio suficiente para más de doscientas personas',url:'img/convite.jpg'}" url="entorno.html">
+        <h2 slot="title">Eventos</h2>
+        <p slot="desc">Una atención del más alto nivel para hacer de tu boda o reunión de trabajo todo un éxito</p>
+        <div slot="button">Ver más sobre los eventos</div>   
+      </mn-panel-right>
+
+      <mn-panel-left :img="{alt:'Todo el hotel está adaptado para que cualquier persona pueda acceder e interactuar con él',url:'img/a11y.jpeg'}" url="accesibilidad.html">
+        <h2 slot="title">Accesibilidad</h2>
+        <p slot="desc">Nuestro hotel es accesible, tanto las instalaciones como la comunicación y atención
+          al cliente para que todos nuestros huéspedes puedan disfrutar de nuestro saber hacer</p>
+        <div slot="button">Ver más sobre la accesibilidad</div>   
+      </mn-panel-left>
+      
+      <section class="subscribe">
+        <h2>¡SUSCRÍBASE A NUESTRAS NOTICIAS Y RECIBA DESCUENTOS PARA SU PRÓXIMA RESERVA ONLINE!</h2>
+        <form>
+          <label class="only-sr" for="newsletter">Introduzca aquí su correo electrónico</label>
+          <input placeholder="Introduzca aquí su correo electrónico" type="email" id="newsletter" maxlength="100"/>
+          <input class="send" type="submit" value="ENVIAR"/>
+        </form>
+      </section>
+    </main>
+    <footer role="contentinfo" id="footer" class="row">
+      <mn-footer></mn-footer>
+    </footer>
+    <script src="js/vue.js" type="text/javascript"></script>
+    <script src="js/scripts.js" type="text/javascript"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="css/fa/css/font-awesome.min.css">
+  </body>
+</html>

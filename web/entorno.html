@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html id="html" lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" lang="es" content="hotel, lujo, cuatro, cinco, estrellas, servicios personalizados, reservar, habitacion">
+    <meta name="description" lang="es" content="Hotel adaptado para todo el mundo, con las mejores instalaciones y servicios.">
+
+    <link href="css/style.css" rel="stylesheet" type="text/css">    
+    
+    <title>Entorno | Midnight Sun Hotel</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  </head>
+  <body>
+     <!--<div id="loader" class="loader">
+      <div class="hollow-dots-spinner center-loader">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+    </div>-->
+    <ul id="skip-links" class="skip-links hide-small">
+      <li><a href="#main">Ir al contenido</a></li>
+      <li><a href="#global-nav">Ir al menú de navegación</a></li>
+      <li><a href="#footer">Ir al pie de página</a></li>
+    </ul>
+    <header id="global-nav" role="banner">
+        <mn-header active="entorno"></mn-header>
+      </header>
+    <main class="a entorno" role="main" id="main">      
+      <nav aria-label="migas de pan" class="breadcrumb">
+        <ol>
+          <li><strong class="only-sr">Estás en: </strong><i class="fa fa-home lightbc" aria-hidden="true"></i></li>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="entorno.html">Entorno</a></li>
+        </ol>
+      </nav>
+      <div class="ancho">
+        <h1 class="only-sr">Entorno del Hotel Integratur</h1>
+        <h2 class="only-sr">¿Qué hacer fuera del hotel?</h2>  
+        
+        <mn-panel-right :img="{alt:'La playa de Valencia es única y posee servicio de autobuses',url:'img/entorno/playa.jpg'}" url="http://www.visitvalencia.com/es/que-visitar-valencia/playas-de-valencia">
+          <h2 slot="title">Playas</h2>
+          <p slot="desc">Playas de aguas cristalinas y arena blanca reconocidas por la Unión Europea</p>
+          <div slot="button">Ver las playas de nuestra provincia</div>   
+        </mn-panel-right>
+
+        <mn-panel-right :img="{alt:'Este parque natural cuenta con más de trescientas hectáreas de terreno y cien especies de animales distintas',url:'img/entorno/naturaleza.jpg'}" url="http://www.parquesnaturales.gva.es/">
+          <h2 slot="title">Naturaleza</h2>
+          <p slot="desc">El parque natural que rodea el hotel es el perfecto observatorio de la fauna y flora ibérica y
+              un paraje de ensueño para la práctica de deportes de montaña</p>
+          <div slot="button">Ver el parque natural</div>   
+        </mn-panel-right>
+
+        <mn-panel-right :img="{alt:'',url:'img/entorno/cultura.jpg'}" url="http://www.lovevalencia.com/cultura-valencia">
+          <h2 slot="title">Cultura</h2>
+          <p slot="desc">Exposiciones, monumentos históricos, espectáculos y otros eventos culturales a un paso del hotel</p>
+          <div slot="button">Ver los centros culturales de nuestra ciudad</div>   
+        </mn-panel-right>
+
+        <mn-panel-right :img="{alt:'',url:'img/entorno/deporte.jpg'}" url="http://www.lovevalencia.com/cultura-valencia">
+          <h2 slot="title">Deportes</h2>
+          <p slot="desc">Nuestro entorno cuenta con una amplia oferta para practicar deportes de todo tipo y asistir
+              a grandes eventos deportivos</p>
+          <div slot="button">Ver los deportes en nuestro entorno</div>   
+        </mn-panel-right>
+
+        <br aria-hidden="true" />
+        <section class="row">          
+          <h2 class="center"><span class="only-sr">Galería fotográfica.</span>Descubre el encanto de nuestro entorno</h2>
+          <div class="grid">
+            <div v-for="(img, index) in images" :style="{ '--anim-delay':  Math.random() +'s'}">
+                <img :src="img.url" :alt="img.alt"@load="imgLoaded(img)" >
+                <p>{{img.desc + index}}</p>
+                {{img.url}}
+            </div>
+            
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer role="contentinfo" id="footer" class="row">
+        <mn-footer></mn-footer>
+    </footer>
+    <script src="js/vue.js" type="text/javascript"></script>
+    <script src="js/scripts.js" type="text/javascript"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="preload" href="css/fa/css/font-awesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">    
+  </body>
+</html>
