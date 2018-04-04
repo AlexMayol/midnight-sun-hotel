@@ -1,9 +1,9 @@
 var header = new Vue({
   el: '#global-nav',
-  components:{
-    'mn-header':{
+  components: {
+    'mn-header': {
       props: ['active'],
-      template:  `<div v-once>
+      template: `<div v-once>
       <button id="hamburguer"><i id="status" class="fa fa-bars" aria-hidden="true"></i></button>    
       <nav role="navigation" class="menu sticky">
         <ul>
@@ -23,9 +23,9 @@ var header = new Vue({
   }
 });
 var footer = new Vue({
-  el:'#footer',
-  components:{
-    'mn-footer':{
+  el: '#footer',
+  components: {
+    'mn-footer': {
       template: `
       <div v-once>
         <div class="row">
@@ -51,20 +51,20 @@ var footer = new Vue({
     }
   }
 });
-Vue.component('mn-panel-left',{
-  props:{
-    url:'',
-    img:{
-      type:Object,
-      default:function(){
+Vue.component('mn-panel-left', {
+  props: {
+    url: '',
+    img: {
+      type: Object,
+      default: function () {
         return {
-          url:'http://via.placeholder.com/350x150',
-          alt:'Imagen no disponible'
+          url: 'http://via.placeholder.com/350x150',
+          alt: 'Imagen no disponible'
         }
       }
     }
   },
-  template:`
+  template: `
             <section class="block container row">
             <div class="panel back-dark col l4 pad-right">                    
               <slot name="title">Título plantilla</slot>
@@ -76,20 +76,20 @@ Vue.component('mn-panel-left',{
           </section>
           `
 })
-Vue.component('mn-panel-right',{
-  props:{
-    url:'',
-    img:{
-      type:Object,
-      default:function(){
+Vue.component('mn-panel-right', {
+  props: {
+    url: '',
+    img: {
+      type: Object,
+      default: function () {
         return {
-          url:'http://via.placeholder.com/350x150',
-          alt:'Imagen no disponible'
+          url: 'http://via.placeholder.com/350x150',
+          alt: 'Imagen no disponible'
         }
       }
     }
   },
-  template:`
+  template: `
             <section class="block container row">
             <div class="panel back-light col l4 pad-left right">         
               <slot name="title">Título plantilla</slot>
@@ -100,156 +100,179 @@ Vue.component('mn-panel-right',{
           </section>
           `
 })
-if(document.getElementsByClassName("inicio")[0]){
-new Vue({
-  el:'.inicio'
+Vue.component('mn-coockie', {
+  data() {
+    return {
+      accepted: localStorage.getItem('aceptoCoockie')
+    }
+  },
+  template: `
+      <div class="coockie" v-if="accepted == 'false'">
+          <h3>Este sitio web no utiliza <span class="italic">coockies</span>, no se preocupe. Esto es solo un mensaje de ejemplo.</h3>
+          <button @click="accept">De acuerdo, lo que tú digas</button>      
+      </div>
+  `,
+  mounted: function () {
+    if (localStorage.getItem('aceptoCoockie') == null) this.accepted = 'false';
+  },
+  methods: {
+    accept: function () {
+      this.accepted = localStorage.setItem('aceptoCoockie', 'true');
+      console.log(this.accepted);
+    }
+  }
 })
-}
-if(document.getElementsByClassName("rest")[0]){
-new Vue({
-  el:'.rest'
-})
-}
-if(document.getElementsByClassName("instalaciones")[0]){
+if (document.getElementsByClassName("inicio")[0]) {
   new Vue({
-    el:'.instalaciones'
+    el: '.inicio'
   })
 }
-if(document.getElementsByClassName("eventos")[0]){
+if (document.getElementsByClassName("rest")[0]) {
   new Vue({
-    el:'.eventos'
-  })
-}
-if(document.getElementsByClassName("accesibilidad")[0]){
-  new Vue({
-    el:'.accesibilidad'
-  })
-}
-if(document.getElementsByClassName("contacto")[0]){
-  new Vue({
-    el:'.contacto'
-  })
-}
-if(document.getElementsByClassName("entorno")[0]){
-  new Vue({
-    el:'.entorno',
-    data:{
-      images:[]
+    el: '.rest',
+    data: {
+      gallery:[]
     },
     mounted(){
-        this.loadImages();
+      for(let a = 0; a < 21; a++){
+        let rand1 = Math.floor(Math.random()*338)+150;
+        let rand2 = Math.floor(Math.random()*238)+150;
+        let item = {desc:'Item '+ a +' description', alt:'Item '+a+' description', url:'http://fillmurray.com/'+rand1+'/'+rand2+'', showImg:false};
+        this.gallery.push(item);
+      }
+      console.log(this.gallery);
     },
-    methods:{
-      imgLoaded(data){
-        console.log(data)
-        data.show = true;
-      },
-      loadImages(){
-        let img = {desc:'Image #',alt:'Lorem ipsum', url:''};
-
-        for(let a = 0; a < 12; a++){
-          if(a % 2 == 0){
-            img.url = 'https://placem.at/people?w=500';
-            console.log("HA SALIDO PAR "+img.url);
-          }else{
-            img.url = 'https://placeimg.com/640/480/any';
-            console.log("HA SALIDO IMPAR "+img.url);
-          }
-          img.show = false;
-          console.log("HABIA ESTO: "+this.images[a]);
-          this.images.push(img);
-          console.log("AHORA HAY ESTO ESTO: "+this.images[a].url);      
-          console.log("----------");      
-        }
-        console.log(this.images)
-        for(let a = 0; a < this.images.length; a++){
-          console.log("HAY ESTO: "+this.images[a].url);
-         }
+    methods: {
+      imgLoad(el) {
+       console.log(el);
+       el.showImg = true;
       }
     }
   })
 }
-var coockie = new Vue({
-  el:'.coockie',
-  data:{
-    accepted: localStorage.getItem('aceptoCoockie')
-  },
-  mounted:function(){
-    if(localStorage.getItem('aceptoCoockie') == null) this.accepted = 'false';    
-  },
-  methods:{
-    acepto:function(){
-      this.accepted = localStorage.setItem('aceptoCoockie', 'true');
-      console.log(this.accepted);
+if (document.getElementsByClassName("instalaciones")[0]) {
+  new Vue({
+    el: '.instalaciones'
+  })
+}
+if (document.getElementsByClassName("eventos")[0]) {
+  new Vue({
+    el: '.eventos'
+  })
+}
+if (document.getElementsByClassName("accesibilidad")[0]) {
+  new Vue({
+    el: '.accesibilidad'
+  })
+}
+if (document.getElementsByClassName("contacto")[0]) {
+  new Vue({
+    el: '.contacto'
+  })
+}
+if (document.getElementById("coockie")) {
+  new Vue({
+    el: '#coockie'
+  })
+}
+if (document.getElementsByClassName("entorno")[0]) {
+  new Vue({
+    el: '.entorno',
+    data: {
+      images: []
     },
-    borrar:function(){   
-      this.accepted = localStorage.setItem('aceptoCoockie', 'false');
-      console.log(this.accepted);
+    mounted() {
+      this.loadImages();
+    },
+    methods: {
+      imgLoaded(data) {
+        console.log(data)
+        data.show = true;
+      },
+      loadImages() {
+
+
+        for (let a = 0; a < 34; a++) {
+          let img = {
+            desc: 'Image #',
+            alt: 'Lorem ipsum',
+            url: ''
+          };
+          let rand = Math.floor(Math.random() * 7);
+          if (a % 2 == 0) {
+            img.url = 'https://placem.at/places?w=50' + rand + '&h=45' + rand + '&random=1&txt=0';
+            this.images.push(img);
+          } else {
+            img.url = 'https://placeimg.com/54' + rand + '/48' + rand + '/arch';
+            this.images.push(img);
+          }
+        }
+      }
     }
-  }
-})
-if(document.getElementById("loader")){
+  })
+}
+if (document.getElementById("loader")) {
   var loader = new Vue({
-    el:'.loader',
+    el: '.loader',
     mounted: function () {
       console.log('Loader cargado');
-  }
+    }
   });
 }
-  //https://api.myjson.com/bins/15y03n
-  //https://placem.at/
-  //https://placeimg.com/
+//https://api.myjson.com/bins/15y03n
+//https://placem.at/
+//https://placeimg.com/
 
 
-if(document.getElementById("vuegallery")){
+if (document.getElementById("vuegallery")) {
   var galeria = new Vue({
-    el:'#vuegallery',
-    data:{
-      items:[],
-      load:[]
+    el: '#vuegallery',
+    data: {
+      items: [],
+      load: []
     },
     mounted: function () {
-      console.log('galeria cargada');     
-      Delighters.config({    
+      console.log('galeria cargada');
+      Delighters.config({
         classNames: ['animated', 'fadeIn'],
-        start:1,
-        end:0
+        start: 1,
+        end: 0
       });
-      this.$http.get('https://api.myjson.com/bins/q4ag5').then(function(response){         
-        this.load = response.data;      
-        for(var i = 0;i < this.load.length;) {
-          this.items.push(this.load.shift());           
-        } 
-        setTimeout(function() {
+      this.$http.get('https://api.myjson.com/bins/q4ag5').then(function (response) {
+        this.load = response.data;
+        for (var i = 0; i < this.load.length;) {
+          this.items.push(this.load.shift());
+        }
+        setTimeout(function () {
           Delighters.reset();
-      }, 200);
-      
+        }, 200);
+
       });
-      
+
     },
-    methods:{    
-      getItems:function(){
-        this.$http.get('https://api.myjson.com/bins/q4ag5').then(function(response){         
-          this.load = response.data;      
-          for(var i = 0;i < 4;i++) {
-            this.items.push(this.load.shift());           
-          } 
-          setTimeout(function() {
+    methods: {
+      getItems: function () {
+        this.$http.get('https://api.myjson.com/bins/q4ag5').then(function (response) {
+          this.load = response.data;
+          for (var i = 0; i < 4; i++) {
+            this.items.push(this.load.shift());
+          }
+          setTimeout(function () {
             Delighters.reset();
-        }, 100);
-        
+          }, 100);
+
         });
       },
-      loadMore: function(){
-        for(var i = 0;i < 4;i++) {
-          if(this.load.length > 0){
+      loadMore: function () {
+        for (var i = 0; i < 4; i++) {
+          if (this.load.length > 0) {
             this.items.push(this.load.shift());
             console.log(this.load.length);
-            setTimeout(function() {
+            setTimeout(function () {
               Delighters.reset();
-          }, 100);
+            }, 100);
           }
-        }             
+        }
       }
     }
   });
@@ -297,21 +320,22 @@ if(document.getElementById("vuegallery")){
     }
   });
 }*/
-  
+
 
 //https://api.myjson.com/bins/q4ag5
 document.getElementById("hamburguer").addEventListener("click", showMenu);
 var count = 0;
 var mm = document.getElementsByClassName("menu");
 var icon = document.getElementById("status");
-function showMenu(){
-  if(count == 0){
+
+function showMenu() {
+  if (count == 0) {
     count++;
     mm[0].style.transform = "translate(0, 0)";
     icon.classList.remove("fa-bars");
     icon.classList.add("fa-times");
-  }else{
-    count=0;
+  } else {
+    count = 0;
     mm[0].style.transform = "translate(-100%, 0)";
     icon.classList.remove("fa-times");
     icon.classList.add("fa-bars");

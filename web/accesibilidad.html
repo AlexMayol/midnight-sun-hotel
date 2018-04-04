@@ -32,47 +32,36 @@
       <br aria-hidden="true" />
       <h1 class="large">Nuestro hotel cuenta con acceso, instalaciones, comunicación, web y formulario de reservas
        accesibles, además de Habitaciones Universales para el uso cómodo y agradable para TODOS </h1>
-      <section class="block container row">
-        <div class="panel back-dark col l4 pad-right">
-          <h2>Acceso al hotel</h2>
-          <p>Un acceso al hotel fácil y cómodo para todos</p>
-          <a class="button-b-l margin-both" href="wip.html"><div>Ver más sobre el acceso al hotel</div></a>
-        </div>
-        <img class="image col l8 pad-left" src="img/acceso.jpg" alt=""/>
-      </section>
 
-      <section class="block container row">
-        <div class="panel back-light col l4 pad-left right">
-          <h2>Instalaciones y comunicación</h2>
-          <p>El hotel cuenta con instalaciones interiores y exteriores y una comunicación accesible
+      <mn-panel-left :img="{alt:'',url:'img/acceso.jpg'}" url="wip.html">
+        <h2 slot="title">Acceso al hotel</h2>
+        <p slot="desc">Un acceso al hotel fácil y cómodo para todos</p>
+        <div slot="button">Ver más sobre el acceso al hotel</div>   
+      </mn-panel-left>
+
+      <mn-panel-right :img="{alt:'',url:'img/jardines.jpg'}" url="wip.html">
+        <h2 slot="title">Instalaciones y comunicación</h2>
+        <p slot="desc">El hotel cuenta con instalaciones interiores y exteriores y una comunicación accesible
           para el uso de todos</p>
-          <a class="button-b-d margin-both" href="wip.html"><div>Ver más sobre las instalaciones y la comunicación</div></a>
-        </div>
-        <img class="image col l8 pad-right left" src="img/jardines.jpg" alt=""/>
-      </section>
-      <section class="block container row">
-        <div class="panel back-dark col l4 pad-right">
-          <h2>Habitación Universal</h2>
-          <p>Una habitación diseñada y concebida para el uso cómodo de todos</p>
-          <a class="button-b-l margin-both" href="wip.html"><div>Ver más sobre la habitación universal</div></a>
-        </div>
-        <img class="image col l8 pad-left" src="habitaciones/doble/universal.jpg" alt=""/>
-      </section>
-      <section class="block container row">
-        <div class="panel back-light col l4 pad-left right">
-          <h2>Sitio web y reservas online</h2>
-          <p>Nuestro sitio web accesible permite a todos navegar, visitar el hotel y reservar
+        <div slot="button">Ver más sobre las instalaciones y la comunicación</div>   
+      </mn-panel-right>
+
+      <mn-panel-left :img="{alt:'',url:'habitaciones/doble/universal.jpg'}" url="wip.html">
+        <h2 slot="title">Habitación Universal</h2>
+        <p slot="desc">Una habitación diseñada y concebida para el uso cómodo de todos</p>
+        <div slot="button">Ver más sobre la habitación universal</div>   
+      </mn-panel-left>
+
+      <mn-panel-right :img="{alt:'',url:'img/reunion2.jpg'}" url="wip.html">
+        <h2 slot="title">Sitio web y reservas online</h2>
+        <p slot="desc">Nuestro sitio web accesible permite a todos navegar, visitar el hotel y reservar
           gracias a nuestro motor de reservas accesible</p>
-          <a class="button-b-d margin-both" href="wip.html" ><div>Ver más sobre el sitio web accesible</div></a>
-          <a class="button-b-d margin-both" href="habitaciones.html"><div>Reservar</div></a>
-        </div>
-        <img class="image col l8 pad-right left" src="img/reunion2.jpg" alt=""/>
-      </section>
+        <div slot="button">Ver más sobre el sitio web accesible</div>           
+      </mn-panel-right>
     </main>
-    <div class="coockie" v-if="accepted == 'false'">
-      <h3>Asepta usté las cuckis? hehe xd</h3>
-      <button @click="acepto">Acepto, kabesa</button>
-      <button @click="borrar">Reniego, fork you</button>
+
+    <div id="coockie">
+      <mn-coockie></mn-coockie>
     </div>
     <footer role="contentinfo" id="footer" class="row">
         <mn-footer></mn-footer>

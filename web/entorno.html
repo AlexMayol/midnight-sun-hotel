@@ -71,15 +71,15 @@
           <div class="grid">
             <div v-for="(img, index) in images" :style="{ '--anim-delay':  Math.random() +'s'}">
                 <img :src="img.url" :alt="img.alt"@load="imgLoaded(img)" >
-                <p>{{img.desc + index}}</p>
-                {{img.url}}
             </div>
             
           </div>
         </section>
       </div>
     </main>
-
+    <div id="coockie">
+        <mn-coockie></mn-coockie>
+      </div>
     <footer role="contentinfo" id="footer" class="row">
         <mn-footer></mn-footer>
     </footer>

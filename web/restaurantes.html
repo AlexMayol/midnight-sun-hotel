@@ -1,63 +1,96 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" lang="es" content="hotel, lujo, cuatro, cinco, estrellas,restaurante, bar, menu, carta">
-    <meta name="description" lang="es" content="El restaurante & bar del Hotel Integratur cuenta con los mejores platos del Mediterráneo">
-      
-    <link href="css/style.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="css/fa/css/font-awesome.min.css">
-    <title>Los restaurantes del hotel | Midnight Sun Hotel</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-  </head>
-  <body>
-    <ul id="skip-links" class="skip-links hide-small">
-      <li><a href="#main">Ir al contenido</a></li>
-      <li><a href="#global-nav">Ir al menú de navegación</a></li>
-      <li><a href="#footer">Ir al pie de página</a></li>
-    </ul>
-    <header id="global-nav" role="banner">
-      <mn-header active="restaurantes"></mn-header>
-    </header>
-    <main class="rest" role="main" id="main">
-      <nav aria-label="migas de pan" class="breadcrumb">
-        <ol>
-          <li><strong class="only-sr">Estás en: </strong><i class="fa fa-home lightbc" aria-hidden="true"></i></li>
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="restaurantes.html">Restaurante</a></li>
-        </ol>
-      </nav>
-      <div class="ancho">
-        <h1 class="only-sr">Restaurantes del hotel</h1>
-        <h2 class="center only-sr">Estos son los tres restaurantes del hotel</h2>
 
-        <mn-panel-left :img="{alt:'',url:'img/gastro/hero1.jpg'}" url="wip.html">
-          <h2 slot="title" class="esp">La Mary</h2>
-          <p class="large" slot="rest">Restaurante español</p>
-          <p slot="desc">Nuestro sabor más tradicional con un punto de innovación</p>
-          <div slot="button">Ver la carta</div>   
-        </mn-panel-left>
-        
-        <mn-panel-left :img="{alt:'',url:'img/gastro/hero2.jpg'}" url="wip.html">
-          <h2 slot="title" class="it" lang="it">Dolce Vita</h2>
-          <p class="large" slot="rest">Restaurante italiano</p>
-          <p slot="desc">Los mejores platos del país de la moda</p>
-          <div slot="button">Ver la carta</div>   
-        </mn-panel-left>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" lang="es" content="hotel, lujo, cuatro, cinco, estrellas,restaurante, bar, menu, carta">
+  <meta name="description" lang="es" content="El restaurante & bar del Hotel Integratur cuenta con los mejores platos del Mediterráneo">
 
-        <mn-panel-left :img="{alt:'',url:'img/gastro/hero3.jpg'}" url="wip.html">
-          <h2 slot="title" lang="ja" class="jp">Enzo</h2>
-          <p class="large" slot="rest">Restaurante japonés</p>
-          <p slot="desc">La cocina japonesa como nunca antes la habías probado</p>
-          <div slot="button">Ver la carta</div>   
-        </mn-panel-left>
-       
-        <section class="row">          
-          <h2 class="center margin-both"><span class="only-sr">Galería fotográfica con </span>Algunas de nuestras especialidades</h2>
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="css/fa/css/font-awesome.min.css">
+  <title>Los restaurantes del hotel | Midnight Sun Hotel</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+</head>
+
+<body>
+  <ul id="skip-links" class="skip-links hide-small">
+    <li>
+      <a href="#main">Ir al contenido</a>
+    </li>
+    <li>
+      <a href="#global-nav">Ir al menú de navegación</a>
+    </li>
+    <li>
+      <a href="#footer">Ir al pie de página</a>
+    </li>
+  </ul>
+  <header id="global-nav" role="banner">
+    <mn-header active="restaurantes"></mn-header>
+  </header>
+  <main class="rest" role="main" id="main">
+    <nav aria-label="migas de pan" class="breadcrumb">
+      <ol>
+        <li>
+          <strong class="only-sr">Estás en: </strong>
+          <i class="fa fa-home lightbc" aria-hidden="true"></i>
+        </li>
+        <li>
+          <a href="index.html">Inicio</a>
+        </li>
+        <li>
+          <a href="restaurantes.html">Restaurante</a>
+        </li>
+      </ol>
+    </nav>
+    <div class="ancho">
+      <h1 class="only-sr">Restaurantes del hotel</h1>
+      <h2 class="only-sr">Estos son los tres restaurantes del hotel</h2>
+
+      <mn-panel-left :img="{alt:'',url:'img/gastro/hero1.jpg'}" url="wip.html">
+        <h2 slot="title" class="esp">La Mary</h2>
+        <p class="large" slot="rest">Restaurante español</p>
+        <p slot="desc">Nuestro sabor más tradicional con un punto de innovación</p>
+        <div slot="button">Ver la carta</div>
+      </mn-panel-left>
+
+      <mn-panel-left :img="{alt:'',url:'img/gastro/hero2.jpg'}" url="wip.html">
+        <h2 slot="title" class="it" lang="it">Dolce Vita</h2>
+        <p class="large" slot="rest">Restaurante italiano</p>
+        <p slot="desc">Los mejores platos del país de la moda</p>
+        <div slot="button">Ver la carta</div>
+      </mn-panel-left>
+
+      <mn-panel-left :img="{alt:'',url:'img/gastro/hero3.jpg'}" url="wip.html">
+        <h2 slot="title" lang="ja" class="jp">Enzo</h2>
+        <p class="large" slot="rest">Restaurante japonés</p>
+        <p slot="desc">La cocina japonesa como nunca antes la habías probado</p>
+        <div slot="button">Ver la carta</div>
+      </mn-panel-left>
+
+      <section class="row">
+        <h2 class="center margin-both">
+          <span class="only-sr">Galería fotográfica con </span>Algunas de nuestras especialidades</h2>
+        <div class="grid">
+          <div class="grid-item" v-for="item in gallery">
+            <div v-if="item.showImg == false" class="loading">
+              <div class="hollow-dots-spinner">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+              </div>
+            </div>
+            <img :src="item.url" :alt="item.alt" @load="imgLoad(item)" :class="{'fadeIn':item.showImg==true}">
+            <div v-if="item.showImg==true" class="item-desc">
+              <p>{{item.desc}}</p>
+            </div>
+          </div>
+        </div>
 
 
-           <!-- <div class="grid">
+
+
+        <!-- <div class="grid">
               <div class="display-container" v-for="img in images">
                 <img :src="img.url" class="image img-grid hover-opacity" :alt="img.alt"/>
                 <div class="display-hover display-custom">
@@ -66,19 +99,23 @@
               </div>
             </div>-->
 
- 
-          </div>
-        </section>
-      </div>
-    </main>
-    <footer role="contentinfo" id="footer" class="row">
-      <i-footer></i-footer>
-    </footer>
-    <script src="js/vue.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/vue.resource/1.3.1/vue-resource.min.js"></script>
-    <script src="js/scripts.js" type="text/javascript"></script>
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Josefin+Sans|Shadows+Into+Light" rel="stylesheet">       
-  </body>
+
+    </div>
+    </section>
+    </div>
+  </main>
+  <div id="coockie">
+    <mn-coockie></mn-coockie>
+  </div>
+  <footer role="contentinfo" id="footer" class="row">
+    <mn-footer></mn-footer>
+  </footer>
+  <script src="js/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/vue.resource/1.3.1/vue-resource.min.js"></script>
+  <script src="js/scripts.js" type="text/javascript"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Josefin+Sans|Shadows+Into+Light" rel="stylesheet">
+</body>
+
 </html>
