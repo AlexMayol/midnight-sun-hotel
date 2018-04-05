@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" lang="es" content="hotel, lujo, cuatro, cinco, estrellas, servicios personalizados, reservar, habitacion">
+    <meta name="description" lang="es" content="Hotel adaptado para todo el mundo, con las mejores instalaciones y servicios.">
+
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    
+
+    <title>Playroom | Midnight Sun Hotel</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  </head>
+  <body>
+
+    <header id="global-nav" role="banner">
+      <mn-header active="home"></mn-header>
+    </header>
+    <main role="main" id="main" class="playroom">
+      <div class="room">
+        <div v-for="row in matrix"  class="cool-panel">
+          <div class="box-item" v-for="col in row" :style="{ '--anim-delay': col*0.1+'s', '--bg-color': '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6) }">
+          
+          </div>
+        </div>
+     </div>     
+    </main>
+    <div id="coockie">
+        <mn-coockie></mn-coockie>
+      </div>
+    <footer role="contentinfo" id="footer" class="row">
+      <mn-footer></mn-footer>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="js/scripts.js" type="text/javascript"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="css/fa/css/font-awesome.min.css">
+  </body>
+</html>

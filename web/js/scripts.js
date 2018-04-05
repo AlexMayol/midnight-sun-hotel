@@ -122,6 +122,28 @@ Vue.component('mn-coockie', {
     }
   }
 })
+Vue.component('mn-modal-img',{  
+  props:['image'],
+  data: function () {
+    return {
+      count: 0
+    }
+  },
+  methods:{
+    closemodal(){
+      this.$emit('closemodal');
+    }
+  },
+  template:`
+    <section  @keyup.esc="closemodal" class="modal-img">
+      <main>
+        <button @click="">X</button>
+        <img :src="image.url" :alt="image.alt">
+        <p>{{image.desc}}</p>
+      </main>
+    </section>
+    `
+})
 if (document.getElementsByClassName("inicio")[0]) {
   new Vue({
     el: '.inicio'
@@ -131,21 +153,26 @@ if (document.getElementsByClassName("rest")[0]) {
   new Vue({
     el: '.rest',
     data: {
-      gallery:[]
+      gallery: []
     },
-    mounted(){
-      for(let a = 0; a < 21; a++){
-        let rand1 = Math.floor(Math.random()*338)+150;
-        let rand2 = Math.floor(Math.random()*238)+150;
-        let item = {desc:'Item '+ a +' description', alt:'Item '+a+' description', url:'http://fillmurray.com/'+rand1+'/'+rand2+'', showImg:false};
+    mounted() {
+      for (let a = 0; a < 21; a++) {
+        let rand1 = Math.floor(Math.random() * 338) + 150;
+        let rand2 = Math.floor(Math.random() * 238) + 150;
+        let item = {
+          desc: 'Item ' + a + ' description',
+          alt: 'Item ' + a + ' description',
+          url: 'http://fillmurray.com/' + rand1 + '/' + rand2 + '',
+          showImg: false
+        };
         this.gallery.push(item);
       }
       console.log(this.gallery);
     },
     methods: {
       imgLoad(el) {
-       console.log(el);
-       el.showImg = true;
+        console.log(el);
+        el.showImg = true;
       }
     }
   })
@@ -179,25 +206,39 @@ if (document.getElementsByClassName("entorno")[0]) {
   new Vue({
     el: '.entorno',
     data: {
-      images: []
+      images: [],
+      imgModal:{desc:'desc',alt:'', url:'',showModal:false}
     },
     mounted() {
       this.loadImages();
     },
     methods: {
-      imgLoaded(data) {
-        console.log(data)
-        data.show = true;
+      closeModal(){
+        console.log("soy el padre y me dicen que cierrw")
+      },
+      zoomImg(img){
+        this.imgModal = img;
+        console.log(this.imgModal)
+      },
+      imgLoaded(img){
+        img.showImg = true;
       },
       loadImages() {
-
-
-        for (let a = 0; a < 34; a++) {
-          let img = {
-            desc: 'Image #',
-            alt: 'Lorem ipsum',
-            url: ''
-          };
+        for (let a = 0; a < 8; a++) {
+          let img = {desc: 'Image description',alt: 'Lorem ipsum',url: '', showImg:false};
+          let rand = Math.floor(Math.random() * 7);
+          if (a % 2 == 0) {
+            img.url = 'https://placem.at/places?w=50' + rand + '&h=45' + rand + '&random=1&txt=0';
+            this.images.push(img);
+          } else {
+            img.url = 'https://placeimg.com/54' + rand + '/48' + rand + '/arch';
+            this.images.push(img);
+          }
+        }
+      },
+      loadMoreImages(x){
+        for (let a = 0; a < x; a++) {
+          let img = {desc: 'Image description',alt: 'Lorem ipsum',url: '', showImg:false};
           let rand = Math.floor(Math.random() * 7);
           if (a % 2 == 0) {
             img.url = 'https://placem.at/places?w=50' + rand + '&h=45' + rand + '&random=1&txt=0';
@@ -210,6 +251,43 @@ if (document.getElementsByClassName("entorno")[0]) {
       }
     }
   })
+}
+if (document.getElementsByClassName("playroom")[0]) {
+ let vm =  new Vue({
+    el: '.playroom',
+    data: {
+      matrix: []
+    },
+    mounted() {
+      let mx =  this.matrix;
+      for (let i = 0; i < 11; i++) {
+        mx[i] = [];
+        for (let j = 0; j < 11; j++) {
+          mx[i][j] = undefined;
+        }
+      }
+
+      for (let i = 0; i < mx.length; i++) {             
+        for (let j = 0; j < mx[i].length; j++) {
+          mx[i][j] = j+1;
+        }
+      }
+
+      let aux = 0;
+      for (let i = 0, j = 0; i < mx.length; i++, j++) {         
+        aux = j;    
+        for(let x = 0; x < j;x++){
+          mx[i][x] +=aux;
+          aux--; 
+        }
+        //console.log(mx[i]);       
+      }
+      this.matrix = mx.slice();
+    },
+    methods: {
+
+    }
+  });
 }
 if (document.getElementById("loader")) {
   var loader = new Vue({
@@ -341,3 +419,4 @@ function showMenu() {
     icon.classList.add("fa-bars");
   }
 }
+

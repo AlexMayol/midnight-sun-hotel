@@ -234,6 +234,9 @@ fieldset{border:none}
 /*Class elements*/
 
 /*Helpers*/
+.main-h1{
+  font-size: 3rem !important;
+}
 .italic{font-style: italic}
 .no-margin-top{margin-top: 0 !important}
 .no-padding-top{padding-top: 0 !important}
@@ -251,7 +254,7 @@ fieldset{border:none}
 .img-grid{padding: 0.3rem 0;background-clip: content-box;}
 .hide-small{display:none!important}
 #hamburguer{position: fixed;z-index: 3 !important;top:0;right: 0;width: auto;z-index: 2;
-  padding:0.2rem;margin:0em !important;background-color: white;transform: translate(0,0);}
+  padding:0.2rem;margin:0em !important;background-color: white;transform: translate(0,0);border-bottom-left-radius: 5px}
 .menu{transform: translate(-100%, 0);transition: transform 0.5s ease;}
 .menu ul{padding-left: 0;height: 100vh;background-color: white;}
 .menu li{list-style-type: none;height: calc(100vh/10)}
@@ -278,6 +281,12 @@ fieldset{border:none}
 .button:hover{
   cursor: pointer;
   background-color: #657366;
+}
+.button-back-dark{
+  transition:all .25s ease-in-out;display:inline-block;background-color:var(--panel-dark-button);color:white;text-decoration: none;margin: 1rem;padding: 1rem;border-radius: 0.3rem  
+}
+.button-back-dark:hover{
+  background-color:var(--panel-dark-button-hover);  
 }
 .room-button{
   text-align: center;
@@ -319,7 +328,7 @@ fieldset{border:none}
 .display-custom p{margin:0;}
 
 .block{position:relative;}
-.panel{display: inline-block;text-align: center;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%); width:auto}
+.panel{display: inline-block;text-align: center;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%); width:70%}
 
 .back-dark, .back-light{border-radius: 0.25rem;background-color: rgba(0, 0, 0, 0.77);color: white;padding: 0.8rem;}
 .back-form{
@@ -534,7 +543,6 @@ fieldset{border:none}
   }
   .full{margin: 1rem 2.5%;width: 95%}
   .indicador{font-size:1.2rem;margin: 0;}
-
   .button-b-l{width: auto;text-decoration: none;}
   .button-b-l div{transition:all .25s ease-in-out;display:inline-block;background-color:var(--panel-dark-button);color:white;text-decoration: none;margin: 1rem;padding: 1rem;border-radius: 0.3rem}
   .button-b-l div:hover{display:inline-block;background-color:var(--panel-dark-button-hover);color:white;text-decoration: none;padding: 1rem;border-radius: 0.3rem}
@@ -851,7 +859,7 @@ body::-webkit-scrollbar-thumb{
 }
 @media screen and (max-width: 1024px) {
   body{
-    font-size: calc(22px + -8 * ((100vw - 320px) / 960));
+    font-size: calc(18px + -8 * ((100vw - 320px) / 960));
   }
 }
 
@@ -950,14 +958,42 @@ body::-webkit-scrollbar-thumb{
   animation-fill-mode: both;
 }
 
-
+.flex-center{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 
 @keyframes fade {
   0%   {opacity:0;transform: scale(0.8);}
   80%  {transform: scale(1.05);}
   100% {opacity:1;transform: scale(1);}
 }
+.modal-img{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color:#0000008f;
+}
+.modal-img img{
+  width: 100%;
+  object-fit: cover;
+}
 
+.grid-entorno{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: .5rem;
+  align-items: stretch;
+  justify-content: center;
+}
+.grid-entorno img{
+  width: 100%;
+  object-fit: cover;
+  opacity: 0;
+}
 .grid { 
   /*display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -1075,4 +1111,35 @@ body::-webkit-scrollbar-thumb{
   100% {
     opacity: 0;
   }
+}
+
+
+/*-------------Playroom-------------*/
+.room{
+  margin: 10rem 0;
+}
+.cool-panel { 
+  display: grid;
+  grid-template-columns: repeat(11,3rem);
+  grid-gap: 1rem;
+  align-items: stretch;
+  justify-items: center;
+  }
+
+.box-item{
+  margin:.2rem;
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  background-color: var(--bg-color);
+  opacity: 0;
+  animation-name: fade;
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
+  animation-delay: var(--anim-delay)
+}
+
+@keyframes fade {
+  0%   {opacity:0;}
+  100% {opacity:1;}
 }
