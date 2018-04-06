@@ -1126,7 +1126,7 @@ body::-webkit-scrollbar-thumb{
   justify-items: center;
   }
 
-.box-item{
+/*.box-item{
   margin:.2rem;
   display: inline-block;
   width: 3rem;
@@ -1137,9 +1137,46 @@ body::-webkit-scrollbar-thumb{
   animation-duration: .5s;
   animation-fill-mode: forwards;
   animation-delay: var(--anim-delay)
+}*/
+
+.box-item{
+  margin:.2rem;
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  background-color: var(--bg-color);
+  opacity: 0;
+  transition-delay: var(--anim-delay);
+  transition: all 1s ease; 
 }
+
 
 @keyframes fade {
   0%   {opacity:0;}
   100% {opacity:1;}
+}
+
+.box-item2{
+  margin:.2rem;
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  background-color: red;
+  opacity: 0;
+  transition-delay: 1s;
+  transition: all .3s ease; 
+}
+.box-visible{
+  opacity:1;
+  transition-delay: var(--anim-delay);
+}
+.opacity{
+  opacity: 0.5;
+}
+.scale{
+  transform: scale(1.05);
+}
+.dimensions{
+  width: 4rem;
+  height: 4rem;
 }

@@ -122,19 +122,19 @@ Vue.component('mn-coockie', {
     }
   }
 })
-Vue.component('mn-modal-img',{  
-  props:['image'],
+Vue.component('mn-modal-img', {
+  props: ['image'],
   data: function () {
     return {
       count: 0
     }
   },
-  methods:{
-    closemodal(){
+  methods: {
+    closemodal() {
       this.$emit('closemodal');
     }
   },
-  template:`
+  template: `
     <section  @keyup.esc="closemodal" class="modal-img">
       <main>
         <button @click="">X</button>
@@ -207,25 +207,35 @@ if (document.getElementsByClassName("entorno")[0]) {
     el: '.entorno',
     data: {
       images: [],
-      imgModal:{desc:'desc',alt:'', url:'',showModal:false}
+      imgModal: {
+        desc: 'desc',
+        alt: '',
+        url: '',
+        showModal: false
+      }
     },
     mounted() {
       this.loadImages();
     },
     methods: {
-      closeModal(){
+      closeModal() {
         console.log("soy el padre y me dicen que cierrw")
       },
-      zoomImg(img){
+      zoomImg(img) {
         this.imgModal = img;
         console.log(this.imgModal)
       },
-      imgLoaded(img){
+      imgLoaded(img) {
         img.showImg = true;
       },
       loadImages() {
         for (let a = 0; a < 8; a++) {
-          let img = {desc: 'Image description',alt: 'Lorem ipsum',url: '', showImg:false};
+          let img = {
+            desc: 'Image description',
+            alt: 'Lorem ipsum',
+            url: '',
+            showImg: false
+          };
           let rand = Math.floor(Math.random() * 7);
           if (a % 2 == 0) {
             img.url = 'https://placem.at/places?w=50' + rand + '&h=45' + rand + '&random=1&txt=0';
@@ -236,9 +246,14 @@ if (document.getElementsByClassName("entorno")[0]) {
           }
         }
       },
-      loadMoreImages(x){
+      loadMoreImages(x) {
         for (let a = 0; a < x; a++) {
-          let img = {desc: 'Image description',alt: 'Lorem ipsum',url: '', showImg:false};
+          let img = {
+            desc: 'Image description',
+            alt: 'Lorem ipsum',
+            url: '',
+            showImg: false
+          };
           let rand = Math.floor(Math.random() * 7);
           if (a % 2 == 0) {
             img.url = 'https://placem.at/places?w=50' + rand + '&h=45' + rand + '&random=1&txt=0';
@@ -253,39 +268,200 @@ if (document.getElementsByClassName("entorno")[0]) {
   })
 }
 if (document.getElementsByClassName("playroom")[0]) {
- let vm =  new Vue({
+  let vm = new Vue({
     el: '.playroom',
     data: {
-      matrix: []
-    },
-    mounted() {
-      let mx =  this.matrix;
-      for (let i = 0; i < 11; i++) {
-        mx[i] = [];
-        for (let j = 0; j < 11; j++) {
-          mx[i][j] = undefined;
-        }
-      }
-
-      for (let i = 0; i < mx.length; i++) {             
-        for (let j = 0; j < mx[i].length; j++) {
-          mx[i][j] = j+1;
-        }
-      }
-
-      let aux = 0;
-      for (let i = 0, j = 0; i < mx.length; i++, j++) {         
-        aux = j;    
-        for(let x = 0; x < j;x++){
-          mx[i][x] +=aux;
-          aux--; 
-        }
-        //console.log(mx[i]);       
-      }
-      this.matrix = mx.slice();
+      matrix: [],
+      mxLength: 5,
+      state:false,
+      scale:false,
+      dimensions:false,
+      opacity:false
     },
     methods: {
+      getDelay(num){
+        return num *0.1 +'s'
+      },
+      getColor(){
+        return '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6)
+      },
+      changeState(){
+        this.state = !this.state
+      },
+      changeScale(){
+        this.scale = !this.scale
+      },
+      changeDimensions(){
+        this.dimensions = !this.dimensions
+      },
+      changeOpacity(){
+        this.opacity = !this.opacity
+      },
+      deleteMatrix() {
+        this.matrix = [];
+        this.state=false;
+        this.scale=false,
+        this.dimensions=false,
+        this.opacity=false
+      },
+      initializeMatrix() {
+        let mx = this.matrix;
+        for (let a = 0; a < this.mxLength; a++) {
+          mx[a] = [];
+          for (let b = 0; b < this.mxLength; b++) {
+            mx[a][b] = undefined;
+          }
+        }
 
+        for (let i = 0; i < mx.length; i++) {
+          for (let j = 0; j < mx[i].length; j++) {
+            mx[i][j] = j + 1;
+          }
+        }
+        this.matrix = mx.slice();
+      },
+      initializeReverseMatrix() {
+        let mx = this.matrix;
+        for (let a = 0; a < this.mxLength; a++) {
+          mx[a] = [];
+          for (let b = 0; b < this.mxLength; b++) {
+            mx[a][b] = undefined;
+          }
+        }
+
+        let aux = 0;
+        for (let i = 0; i < mx.length; i++) {
+          for (let j = mx[i].length; j > 0; j--) {
+            mx[i][j - 1] = aux + 1;
+            aux++;
+          }
+          aux = 0;
+        }
+        this.matrix = mx.slice();
+      },
+      createMatrixLeftRight(){
+        this.initializeMatrix();
+      },
+      createMatrixRightLeft(){
+        this.initializeReverseMatrix();
+      },
+      createMatrixTopBot(){
+        let mx = this.matrix;
+        for (let a = 0; a < this.mxLength; a++) {
+          mx[a] = [];
+          for (let b = 0; b < this.mxLength; b++) {
+            mx[a][b] = undefined;
+          }
+        }
+
+        for (let i = 0; i < mx.length; i++) {
+          for (let j = 0; j < mx[i].length; j++) {
+            mx[i][j] = i + 1;
+          }
+        }
+        this.matrix = mx.slice();
+      },
+      createMatrixBotTop(){
+        let mx = this.matrix;
+        for (let a = 0; a < this.mxLength; a++) {
+          mx[a] = [];
+          for (let b = 0; b < this.mxLength; b++) {
+            mx[a][b] = undefined;
+          }
+        }
+
+        let aux = 1;
+        for (let i = mx.length; i > 0; i--) {
+          for (let j = 0; j < mx[i-1].length; j++) {
+            mx[i-1][j] = aux;
+          }
+          aux++;
+        }
+        this.matrix = mx.slice();
+      },
+      createMatrixCrossed(){
+        let mx = this.matrix;
+        for (let a = 0; a < this.mxLength; a++) {
+          mx[a] = [];
+          for (let b = 0; b < this.mxLength; b++) {
+            mx[a][b] = undefined;
+          }
+        }
+
+        for (let i = 0; i < mx.length; i++) {
+          for (let j = 0; j < mx[i].length; j++) {
+            if(j % 2 == 0){
+              mx[i][j] = i+1;
+            }            
+          }
+        }
+        let aux = 1;
+        for (let i = mx.length; i > 0; i--) {
+          for (let j = 0; j < mx[i-1].length; j++) {
+            if(j % 2 != 0){
+              mx[i-1][j] = aux;
+            }            
+          }
+          aux++;
+        }
+        this.matrix = mx.slice();
+      },
+      createMatrixArrowTopLeft() { /*from top-left to bot-right */
+        this.initializeMatrix();
+        let mx = this.matrix;
+
+        let aux = 0;
+        for (let q = 0, w = 0; q < mx.length; q++, w++) {
+          aux = w;
+          for (let x = 0; x < w; x++) {
+            mx[q][x] += aux;
+            aux--;
+          }
+        }
+        this.matrix = mx.slice();
+      },
+      createMatrixArrowBotLeft() { /*from bot-left to top-right */
+        this.initializeMatrix();
+        let mx = this.matrix;
+
+        let aux = 0;
+        for (let a = mx.length, b = 0; a > 0; a--, b++) {
+          aux = b;
+          for (let x = 0; x < b; x++) {
+            mx[a - 1][x] += aux;
+            aux--;
+          }
+        }
+        this.matrix = mx.slice();
+      },
+      createMatrixArrowTopRight() { /*from top-right to bot-left */
+        this.initializeReverseMatrix();
+        let mx = this.matrix;
+
+        let aux = 0;
+        for (let a = 0, b = 0; a < mx.length; a++, b++) {
+          aux = b;
+          for (let x = mx[a].length, l = 0; l < b; x--, l++) {
+            mx[a][x - 1] += aux;
+            aux--;           
+          }
+        }
+        this.matrix = mx.slice();
+      },
+      createMatrixArrowBotRight() { /*from bot-right to top-left */
+        this.initializeReverseMatrix();
+        let mx = this.matrix;
+
+        let aux = 0;
+        for (let a = mx.length, b = 0; a > 0; a--, b++) {        
+          aux = b;
+          for (let x = mx[a-1].length, l = 0; l < b; x--, l++) {            
+            mx[a-1][x-1] += aux;
+            aux--;           
+          }
+        }
+        this.matrix = mx.slice();
+      }
     }
   });
 }
@@ -419,4 +595,3 @@ function showMenu() {
     icon.classList.add("fa-bars");
   }
 }
-
